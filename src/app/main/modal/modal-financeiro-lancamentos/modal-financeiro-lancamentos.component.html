@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalCenterTitle">Lançamentos Fianceiros</h5>
+</div>
+<div class="modal-body" tabindex="0" ngbAutofocus>
+    <form class="needs-validation" novalidate [formGroup]="form">
+        <div class="form-row">
+            <div class="col-sm-12">
+                <label for="validationCustom01">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Energia Eletrica" formControlName="nome"
+                    [ngClass]="{ 'is-invalid': submitted && hasError('nome')}">
+                <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['required']">
+                    O campo nome é obrigatório
+                </div>
+                <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['minlength']">
+                    O none precisa ter no minimo {{hasError('nome')['minlength'].requiredLength}}
+                    caracteres
+                </div>
+                <div class="invalid-feedback" *ngIf="hasError('nome') && hasError('nome')['maxlength']">
+                    O none precisa ter no maximo {{hasError('nome')['maxlength'].requiredLength}}
+                    caracteres
+                </div>
+                <label for="validationCustom01">Valor</label>
+                <input type="number" class="form-control" id="valor" placeholder="100,00" formControlName="valor"
+                    [ngClass]="{ 'is-invalid': submitted && hasError('valor')}">
+                <div class="invalid-feedback">
+                    O campo valor é obrigatório
+                </div>
+                <label for="validationCustom01">Operação</label>
+                <select class="custom-select" id="operacao" formControlName="operacao"
+                    [ngClass]="{ 'is-invalid': submitted && hasError('operacao')}">
+                    <option value=1>Debito</option>
+                    <option value=2>Crédito</option>
+                </select>
+                <div class="invalid-feedback" *ngIf="hasError('operacao') && hasError('operacao')['required']">
+                    O campo nome é obrigatório
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="onSubimit()" rippleEffect>
+        Confirmar
+    </button>
+    <button type="button" class="btn btn-button" (click)="onCancel()" rippleEffect>
+        Cancelar
+    </button>
+</div>
